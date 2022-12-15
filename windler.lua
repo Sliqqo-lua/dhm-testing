@@ -2,30 +2,26 @@
 --LIBARY--
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("DEXHUB V.3.23 - Beta", "Midnight")
+local Window = Library.CreateLib("windler", "sentinel")
 
 
 --MAIN--
 
 
-local AIMLOCKS = Window:NewTab("aimlock and silent aim")
-local aimlock = AIMLOCKS:NewSection("AIMLCOK HERE!")
+local AIMLOCKS = Window:NewTab("aim")
+local aimlock = AIMLOCKS:NewSection("aimlock")
 
 
 local MOVEMENT = Window:NewTab("movment")
-local dad  = MOVEMENT:NewSection("MOVMENT/SPEED!")
-
-
-local ESP = Window:NewTab("esp")
-local esp = ESP:NewSection("ESP!")
+local dad  = MOVEMENT:NewSection("movement exploits")
 
 
 local PLAYER = Window:NewTab("player")
-local player = PLAYER:NewSection("PLAYER")
+local player = PLAYER:NewSection("player utility")
 
 
 local FUN = Window:NewTab("fun stuff!")
-local fun = FUN:NewSection("FUN STUFF!")
+local fun = FUN:NewSection("fun features")
 
 
 local EASY = Window:NewTab("more")
@@ -33,57 +29,9 @@ local easy = EASY:NewSection("MORE SUTFF HERE")
 
 
 local COOL = Window:NewTab("credits")
-local cool = COOL:NewSection("CREDITS TO WHITEMOON AND VENO!")
+local cool = COOL:NewSection("credits to narco and blurred")
 
 --SCRIPTS--
-
-aimlock:NewButton("streamble silient aim", "makes the aimbot look streamble", function()
--- // Services
-local Players = game:GetService("Players")
-
--- // Vars
-local LocalPlayer = Players.LocalPlayer
-local accomidationfactor = .1213
-
--- // Silent Aim Module
-local SilentAim = loadstring(game:HttpGet("https://pastebin.com/raw/2f0mGbMP"))()
-SilentAim.TeamCheck = false
--- // Metatable vars
-local mt = getrawmetatable(game)
-local backupindex = mt.__index
-setreadonly(mt, false)
-
--- // Check if player is down
-SilentAim.checkSilentAim = function()
-    local checkA = (SilentAim.SilentAimEnabled == true and SilentAim.Selected ~= LocalPlayer)
-    local playerCharacter = SilentAim.Selected.Character
-    local daHood = (playerCharacter.BodyEffects["K.O"].Value == false or playerCharacter:FindFirstChild("GRABBING_CONSTRAINT") ~= nil)
-
-    return (checkA and daHood)
-end
-
--- // Hook
-mt.__index = newcclosure(function(t, k)
-    if (t:IsA("Mouse") and (k == "Hit")) then
-        print(t, k)
-        local CPlayer = SilentAim.Selected
-        if (SilentAim.checkSilentAim()) then
-            if (CPlayer.Character:FindFirstChild("HumanoidRootPart")) then
-                return {p=(CPlayer.Character.HumanoidRootPart.CFrame.p+(CPlayer.Character.HumanoidRootPart.Velocity*accomidationfactor))}
-            end
-        end
-    end
-    return backupindex(t, k)
-end)
-
--- // Revert
-setreadonly(mt, true)
-end)
-
-
-
-
-
 
 
 aimlock:NewButton("AimLock", "gives you aimbot!:)", function()
@@ -193,8 +141,8 @@ local PredictionValue = .1208726
                 if Settings.rewrittenmain.NOTIF == true then
                     Plr = getClosestPlayerToCursor()
                 game.StarterGui:SetCore("SendNotification", {
-                    Title = "THANKS FOR USING NASA.EXE";
-                    Text = "UNLOCKED",
+                    Title = "windler";
+                    Text = "unlocked",
                     Duration = 3
                 })
             end
@@ -204,7 +152,7 @@ local PredictionValue = .1208726
                 if Settings.rewrittenmain.NOTIF == true then
  
                     game.StarterGui:SetCore("SendNotification", {
-                        Title = "THANKS FOR USING NASA.EXE";
+                        Title = "windler";
                         Text = "Target: "..tostring(Plr.Character.Humanoid.DisplayName),
                         Duration = 3
                     })
@@ -386,7 +334,7 @@ local PredictionValue = .1208726
     
     
     aimlock:NewButton("dhm aimlock OP!!", "THIS IS FOR HOOD MODDED!!!", function()
-local Settings = { AimLock = { Enabled = true, Aimlockkey = "q", Prediction = 0.1318, Aimpart = 'LowerTorso', Notifications = true }, Settings = { Thickness = 2.3, Transparency = 1, Color = Color3.fromRGB(50, 255, 255), FOV = false } } local CurrentCamera = game:GetService("Workspace").CurrentCamera local Inset = game:GetService("GuiService"):GetGuiInset().Y local RunService = game:GetService("RunService") local Mouse = game.Players.LocalPlayer:GetMouse() local LocalPlayer = game.Players.LocalPlayer local Line = Drawing.new("Line") local Circle = Drawing.new("Circle") local Plr = game.Players.LocalPlayer Mouse.KeyDown:Connect(function(KeyPressed) if KeyPressed == (Settings.AimLock.Aimlockkey) then if Settings.AimLock.Enabled == true then Settings.AimLock.Enabled = false if Settings.AimLock.Notifications == true then Plr = FindClosestPlayer() game.StarterGui:SetCore("SendNotification", { Title = "thanks for using dexxhub!", Text = "unlocked.." }) end else Plr = FindClosestPlayer() Settings.AimLock.Enabled = true if Settings.AimLock.Notifications == true then game.StarterGui:SetCore("SendNotification", { Title = "thanks for using dexxhub!", Text = "Locked On : " .. tostring(Plr.Character.Humanoid.DisplayName) }) end end end end) function FindClosestPlayer() local ClosestDistance, ClosestPlayer = math.huge, nil; for _, Player in next, game:GetService("Players"):GetPlayers() do if Player ~= LocalPlayer then local Character = Player.Character if Character and Character.Humanoid.Health > 1 then local Position, IsVisibleOnViewPort = CurrentCamera:WorldToViewportPoint(Character.HumanoidRootPart .Position) if IsVisibleOnViewPort then local Distance = (Vector2.new(Mouse.X, Mouse.Y) - Vector2.new(Position.X, Position.Y)).Magnitude if Distance < ClosestDistance then ClosestPlayer = Player ClosestDistance = Distance end end end end end return ClosestPlayer, ClosestDistance end RunService.Heartbeat:connect(function() if Settings.AimLock.Enabled == true then local Vector = CurrentCamera:WorldToViewportPoint(Plr.Character[Settings.AimLock.Aimpart].Position + (Plr.Character[Settings.AimLock.Aimpart].Velocity * Settings.AimLock.Prediction)) Line.Color = Settings.Settings.Color Line.Transparency = Settings.Settings .Transparency Line.Thickness = Settings.Settings .Thickness Line.From = Vector2.new(Mouse.X, Mouse.Y + Inset) Line.To = Vector2.new(Vector.X, Vector.Y) Line.Visible = true Circle.Position = Vector2.new(Mouse.X, Mouse.Y + Inset) Circle.Visible = Settings.Settings.FOV Circle.Thickness = 15.5 Circle.Thickness = 15 Circle.Radius = 450 Circle.Color = Settings.Settings.Color elseif Settings.AimLock.FOV == true then Circle.Visible = true else Circle.Visible = false Line.Visible = false end end) local mt = getrawmetatable(game) local old = mt.__namecall setreadonly(mt, false) mt.__namecall = newcclosure(function(...) local args = {...} if Settings.AimLock.Enabled and getnamecallmethod() == "FireServer" and args[2] == "MousePos" then args[3] = Plr.Character[Settings.AimLock.Aimpart].Position + (Plr.Character[Settings.AimLock.Aimpart].Velocity * Settings.AimLock.Prediction) return old(unpack(args)) end return old(...) end)end)
+local Settings = { AimLock = { Enabled = true, Aimlockkey = "q", Prediction = 0.1318, Aimpart = 'LowerTorso', Notifications = true }, Settings = { Thickness = 2.3, Transparency = 1, Color = Color3.fromRGB(50, 255, 255), FOV = false } } local CurrentCamera = game:GetService("Workspace").CurrentCamera local Inset = game:GetService("GuiService"):GetGuiInset().Y local RunService = game:GetService("RunService") local Mouse = game.Players.LocalPlayer:GetMouse() local LocalPlayer = game.Players.LocalPlayer local Line = Drawing.new("Line") local Circle = Drawing.new("Circle") local Plr = game.Players.LocalPlayer Mouse.KeyDown:Connect(function(KeyPressed) if KeyPressed == (Settings.AimLock.Aimlockkey) then if Settings.AimLock.Enabled == true then Settings.AimLock.Enabled = false if Settings.AimLock.Notifications == true then Plr = FindClosestPlayer() game.StarterGui:SetCore("SendNotification", { Title = "windler", Text = "unlocked.." }) end else Plr = FindClosestPlayer() Settings.AimLock.Enabled = true if Settings.AimLock.Notifications == true then game.StarterGui:SetCore("SendNotification", { Title = "windler", Text = "Locked On : " .. tostring(Plr.Character.Humanoid.DisplayName) }) end end end end) function FindClosestPlayer() local ClosestDistance, ClosestPlayer = math.huge, nil; for _, Player in next, game:GetService("Players"):GetPlayers() do if Player ~= LocalPlayer then local Character = Player.Character if Character and Character.Humanoid.Health > 1 then local Position, IsVisibleOnViewPort = CurrentCamera:WorldToViewportPoint(Character.HumanoidRootPart .Position) if IsVisibleOnViewPort then local Distance = (Vector2.new(Mouse.X, Mouse.Y) - Vector2.new(Position.X, Position.Y)).Magnitude if Distance < ClosestDistance then ClosestPlayer = Player ClosestDistance = Distance end end end end end return ClosestPlayer, ClosestDistance end RunService.Heartbeat:connect(function() if Settings.AimLock.Enabled == true then local Vector = CurrentCamera:WorldToViewportPoint(Plr.Character[Settings.AimLock.Aimpart].Position + (Plr.Character[Settings.AimLock.Aimpart].Velocity * Settings.AimLock.Prediction)) Line.Color = Settings.Settings.Color Line.Transparency = Settings.Settings .Transparency Line.Thickness = Settings.Settings .Thickness Line.From = Vector2.new(Mouse.X, Mouse.Y + Inset) Line.To = Vector2.new(Vector.X, Vector.Y) Line.Visible = true Circle.Position = Vector2.new(Mouse.X, Mouse.Y + Inset) Circle.Visible = Settings.Settings.FOV Circle.Thickness = 15.5 Circle.Thickness = 15 Circle.Radius = 450 Circle.Color = Settings.Settings.Color elseif Settings.AimLock.FOV == true then Circle.Visible = true else Circle.Visible = false Line.Visible = false end end) local mt = getrawmetatable(game) local old = mt.__namecall setreadonly(mt, false) mt.__namecall = newcclosure(function(...) local args = {...} if Settings.AimLock.Enabled and getnamecallmethod() == "FireServer" and args[2] == "MousePos" then args[3] = Plr.Character[Settings.AimLock.Aimpart].Position + (Plr.Character[Settings.AimLock.Aimpart].Velocity * Settings.AimLock.Prediction) return old(unpack(args)) end return old(...) end)end)
     
     
     
@@ -690,20 +638,20 @@ sethiddenproperty(lighting, "Technology", Enum.Technology.Compatibility)
 settings().Rendering.QualityLevel = 4
 
 sbox.Parent = lighting
-sbox.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
-sbox.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
-sbox.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
-sbox.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
-sbox.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
-sbox.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
-lighting.Ambient = Color3.fromRGB(50, 255, 255)
-lighting.FogColor = Color3.fromRGB(50, 255, 255)
+sbox.SkyboxBk = "http://www.roblox.com/asset/?id=264908339"
+sbox.SkyboxDn = "http://www.roblox.com/asset/?id=264907909"
+sbox.SkyboxFt = "http://www.roblox.com/asset/?id=264909420"
+sbox.SkyboxLf = "http://www.roblox.com/asset/?id=264909758"
+sbox.SkyboxRt = "http://www.roblox.com/asset/?id=264908886"
+sbox.SkyboxUp = "http://www.roblox.com/asset/?id=264907379"
+lighting.Ambient = Color3.fromRGB(161, 112, 230)
+lighting.FogColor = Color3.fromRGB(161, 112, 230)
 lighting.ClockTime = 2
 lighting.FogEnd = 1000
 for i, v in pairs(game:GetService("Workspace"):GetChildren()) do
     if v:IsA("BasePart") and v.Material == Enum.Material.Neon then
         v.Transparency = 0.1
-        v.Color = Color3.fromRGB(50, 255, 255)
+        v.Color = Color3.fromRGB(161, 112, 230)
     end
 end
 end)

@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("windler", "Synapse")
+local Window = Library.CreateLib("windler", "Sentinel")
 
 
 --MAIN--
@@ -641,14 +641,12 @@ sbox.SkyboxFt = "http://www.roblox.com/asset/?id=264909420"
 sbox.SkyboxLf = "http://www.roblox.com/asset/?id=264909758"
 sbox.SkyboxRt = "http://www.roblox.com/asset/?id=264908886"
 sbox.SkyboxUp = "http://www.roblox.com/asset/?id=264907379"
-lighting.Ambient = Color3.fromRGB(161, 112, 230)
-lighting.FogColor = Color3.fromRGB(161, 112, 230)
+lighting.Ambient = Color3.fromRGB(153, 92, 237)
 lighting.ClockTime = 2
-lighting.FogEnd = 1000
 for i, v in pairs(game:GetService("Workspace"):GetChildren()) do
     if v:IsA("BasePart") and v.Material == Enum.Material.Neon then
         v.Transparency = 0.1
-        v.Color = Color3.fromRGB(161, 112, 230)
+        v.Color = Color3.fromRGB(153, 92, 237)
     end
 end
 end)

